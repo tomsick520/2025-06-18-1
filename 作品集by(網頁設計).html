@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>我的作品集</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfdfd;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #5cdfcb;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .card {
+      background-color: #5cdfcb;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(176, 63, 63, 0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      background-color: #cd9d67;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>作品集by(網頁設計)</h1>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <h2>作品一：購物平台</h2>
+      <p>6/11製作</p>
+      <a href="購物頻台.html" target="_blank">查看作品</a>
+    </div>
+
+    <div class="card">
+      <h2>作品二：google</h2>
+      <p>05/28製作</p>
+      <a href="google.html" target="_blank">查看作品</a>
+    </div>
+
+    <div class="card">
+      <h2>作品三：年齡判斷</h2>
+      <p>05/21製作</p>
+      <a href="年齡判斷範例.html" target="_blank">查看作品</a>
+    </div>
+    </div>
+    </div>
+  </main>
+</body>
+</html>

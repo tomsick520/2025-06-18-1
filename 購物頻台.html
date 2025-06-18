@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購物平台</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* 背景顏色 */
+            color: #333333; /* 文字顏色 */
+            font-size: 16px; /* 文字大小 */
+        }
+
+        #products {
+            display: block;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            width: 200px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .product-image {
+            width: 150px; /* 圖片大小 */
+            height: 150px;
+        }
+
+        #cart {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        #cart-items {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #cart-items li {
+            margin: 5px 0;
+        }
+
+        #total-price {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>購物平台</h1>
+    <div id="products">
+        <div class="product">
+            <img src="滿漢大餐.jpg" alt="商品1" class="product-image">
+            <h2>滿漢大餐紅燒口味</h2>
+            <p>價格：$60</p>
+            <button onclick="addToCart('商品1', 60)">加入購物車</button>
+        </div>
+        <div class="product">
+            <img src="滿漢大餐Gold 金牛肉麵.jpg" alt="商品2" class="product-image">
+            <h2>滿漢大餐金牛肉麵</h2>
+            <p>價格：$120</p>
+            <button onclick="addToCart('商品2', 120)">加入購物車</button>
+        </div>
+    </div>
+    <div id="cart">
+        <h2>購物車</h2>
+        <ul id="cart-items">
+            <!-- 購物車商品將在這裡顯示 -->
+        </ul>
+        <div id="total-price">總價: $0</div>
+        <button onclick="checkout()">結賬</button>
+        <button onclick="clearCart()">清空購物車</button>
+    </div>
+
+    <script>
+        let cart = {};
+
+        function addToCart(productName, price) {
+            if (cart[productName]) {
+                cart[productName].count++;
+            } else {
+                cart[productName] = { count: 1, price: price };
+            }
+            updateCart();
+            alert(productName + ' 已加入購物車');
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+            let total = 0;
+            let index = 1;
+            for (const productName in cart) {
+                const item = cart[productName];
+                const li = document.createElement('li');
+                li.textContent = `${index}. ${productName} x ${item.count} - $${item.price * item.count}`;
+                cartItems.appendChild(li);
+                total += item.price * item.count;
+                index++;
+            }
+            document.getElementById('total-price').textContent = `總價: $${total}`;
+        }
+
+        function checkout() {
+            if (Object.keys(cart).length === 0) {
+                alert('購物車是空的');
+            } else {
+                alert('結賬功能尚未實現');
+            }
+        }
+
+        function clearCart() {
+            if (confirm('確定要清空購物車嗎？')) {
+                cart = {};
+                updateCart();
+                alert('購物車已清空');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>年齡判斷範例</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .input-group {
+            margin: 20px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-left: 4px solid #4CAF50;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>年齡判斷器</h1>
+
+        <div class="input-group">
+            <label for="age">請輸入年齡：</label>
+            <input type="number" id="age" placeholder="輸入您的年齡">
+        </div>
+
+        <button onclick="checkAge()">檢查是否成年</button>
+
+        <div class="result" id="result">
+            <!-- 這裡會顯示判斷結果 -->
+        </div>
+    </div>
+
+    <script>
+        function checkAge() {
+            // 獲取輸入的年齡值
+            const ageInput = document.getElementById("age");
+            const resultDiv = document.getElementById("result");
+
+            // 檢查是否有輸入值
+            if (!ageInput.value) {
+                resultDiv.textContent = "請輸入年齡！";
+                resultDiv.style.display = "block";
+                resultDiv.style.backgroundColor = "#ffebee";
+                resultDiv.style.borderLeftColor = "#f44336";
+                return;
+            }
+
+            // 將輸入值轉換為數字
+            const age = parseInt(ageInput.value);
+
+            // 判斷年齡是否為20歲以上
+            if (age >= 20) {
+                resultDiv.textContent = `您今年 ${age} 歲，已成年！`;
+                resultDiv.style.backgroundColor = "#e8f5e9";
+                resultDiv.style.borderLeftColor = "#4CAF50";
+            } else {
+                resultDiv.textContent = `您今年 ${age} 歲，未成年！`;
+                resultDiv.style.backgroundColor = "#fff3e0";
+                resultDiv.style.borderLeftColor = "#ff9800";
+            }
+
+            // 顯示結果
+            resultDiv.style.display = "block";
+        }
+    </script>
+</body>
+</html>
